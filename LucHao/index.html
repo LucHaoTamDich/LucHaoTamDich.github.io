@@ -536,12 +536,12 @@ Ngày lập quẻ:
 		$("#screenshot").show();
         html2canvas(elm, {
             useCORS: true,
-            width: elm.scrollWidth,
-            height: elm.scrollHeight,
-            windowWidth: document.body.scrollWidth,
-            windowHeight: document.body.scrollHeight,
-            x: 0,
-            y: window.pageYOffset
+            width: elm.availWidth,
+            height: elm.availHeight,
+            windowWidth: elm.scrollWidth,
+            windowHeight: elm.scrollHeight,
+            x: elm.pageXOffset,
+            y: elm.pageYOffset
         }).then(function(canvas) {
             var canvasWidth = elm.scrollWidth;
                 var canvasHeight = elm.scrollHeight;
