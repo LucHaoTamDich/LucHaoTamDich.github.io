@@ -535,7 +535,7 @@ Ngày lập quẻ:
 
         var f = "quedich";
 		$('#preview').empty();
-		copy_ele.show();
+		$('#screenshot').show();
         $('body').css('overflow-y','hidden');
 
         html2canvas(copy_ele, {
@@ -546,7 +546,7 @@ Ngày lập quẻ:
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
                 copy_preview.prepend(img);
 
-                copy_ele.hide();
+                $('#screenshot').hide();
                 $('body').css('overflow-y','scroll');
             });
 	 })
