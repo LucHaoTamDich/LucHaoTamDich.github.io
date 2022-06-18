@@ -538,7 +538,7 @@ Ngày lập quẻ:
 		$('#screenshot').show();
         $('body').css('overflow-y','hidden');
 
-        html2canvas(copy_ele, {
+        html2canvas($('#screenshot').get(0), {
             useCORS: true,
             }).then((canvas) => {
                 var canvasWidth = scrollW;
