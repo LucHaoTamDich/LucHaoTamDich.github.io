@@ -543,6 +543,9 @@ Ngày lập quẻ:
             }).then((canvas) => {
                 var canvasWidth = scrollW;
                 var canvasHeight = scrollH;
+                console.log(scrollW + '\n');
+                console.log(scrollH + '\n');
+                
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
                 $('#preview').prepend(img);
 
