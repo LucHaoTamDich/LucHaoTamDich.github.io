@@ -155,3 +155,7 @@ div.tab1 button.active {
     border: 1px solid #ccc;
     border-top: none;
 }
+
+.chitietngay {
+    text-align: center;
+}
