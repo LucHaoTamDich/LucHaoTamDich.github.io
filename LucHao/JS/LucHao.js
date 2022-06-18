@@ -2,6 +2,7 @@ const HaoAm = '../IMG/am.png';
 const HaoAmDong = '../IMG/amdong.png';
 const HaoDuong = '../IMG/duong.png';
 const HaoDuongDong = '../IMG/duongdong.png';
+
 // JavaScript Document
 function khiloaxong() {
 	var today = new Date();
