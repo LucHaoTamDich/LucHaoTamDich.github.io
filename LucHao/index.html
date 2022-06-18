@@ -544,7 +544,7 @@ Ngày lập quẻ:
                 var canvasWidth = scrollW;
                 var canvasHeight = scrollH;
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
-                copy_preview.prepend(img);
+                $('#preview').prepend(img);
 
                 $('#screenshot').hide();
                 $('body').css('overflow-y','scroll');
