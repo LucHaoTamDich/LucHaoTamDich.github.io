@@ -543,8 +543,8 @@ Ngày lập quẻ:
             x: 0,
             y: window.pageYOffset
         }).then(function(canvas) {
-            var canvasWidth = canvas.width-10;
-                var canvasHeight = canvas.height;
+            var canvasWidth = elm.scrollWidth;
+                var canvasHeight = elm.scrollHeight;
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
                     $('#preview').prepend(img);
 			$("#screenshot").hide();
