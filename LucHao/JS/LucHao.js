@@ -1,7 +1,7 @@
-const HaoAm = './Lập Quẻ Dịch_files/hao/am.png';
-const HaoAmDong = './Lập Quẻ Dịch_files/hao/amdong.png';
-const HaoDuong = './Lập Quẻ Dịch_files/hao/duong.png';
-const HaoDuongDong = './Lập Quẻ Dịch_files/hao/duongdong.png';
+const HaoAm = '../IMG/am.png';
+const HaoAmDong = '../IMG/amdong.png';
+const HaoDuong = '../IMG/duong.png';
+const HaoDuongDong = '../IMG/duongdong.png';
 // JavaScript Document
 function khiloaxong() {
 	var today = new Date();
