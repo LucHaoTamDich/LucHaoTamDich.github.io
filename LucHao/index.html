@@ -525,30 +525,33 @@ Ngày lập quẻ:
 </div>
 </div>
 
-
-
+<style>
+    #canvas_handler {
+   position:absolute;
+   left: -10000px;
+  }
+</style>
+<iframe id="canvas_handler" />
 <script>
      //$("#screenshot").hide();
 	 $('#clickluchao').click(function(e){
-	 		var elm = $('#screenshot').get(0);
-		var f = "quedich";
-		$('#preview').empty();
-		$("#screenshot").show();
-        html2canvas(elm, {
+        const copy_ele = $('#screenshot').get(0).cloneNode(true);
+        const copy_preview = $('#preview').get(0).cloneNode(true);
+        const canvas_handler = $('#canvas_handler').get(0);
+        canvas_handler.appendChild(copy_ele);
+        canvas_handler.appendChild(copy_preview);
+        canvas_handler.style.height = copy_ele.scrollHeight;
+        canvas_handler.style.width = copy_ele.scrollWidth;
+
+        html2canvas(copy_ele, {
             useCORS: true,
-            width: elm.availWidth,
-            height: elm.availHeight,
-            windowWidth: elm.scrollWidth,
-            windowHeight: elm.scrollHeight,
-            x: elm.pageXOffset,
-            y: elm.pageYOffset
-        }).then(function(canvas) {
-            var canvasWidth = elm.scrollWidth;
+            }).then((canvas) => {
+                var canvasWidth = elm.scrollWidth;
                 var canvasHeight = elm.scrollHeight;
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
-                    $('#preview').prepend(img);
-			$("#screenshot").hide();
-        });
+                copy_preview.prepend(img);
+            });
+        canvas_handler.removeChild(table_ele);
 	 })
 </script>
 <style>.footer,.generic-footer{margin-bottom:98px}@media (min-width:374px){.footer,.generic-footer{margin-bottom:78px}}@media (min-width:546px){.footer,.generic-footer{margin-bottom:56px}}@media (min-width:1055px){.footer,.generic-footer{margin-bottom:0}}.disclaimer{position:fixed;z-index:9999999;bottom:0;right:0;border-top:2px solid #ff5c62;text-align:center;font-size:14px;font-weight:400;background-color:#fff;padding:5px 10px 5px 10px}.disclaimer a:hover{text-decoration:underline}@media (min-width:1052px){.disclaimer{text-align:right;border-left:2px solid red;border-top-left-radius:10px}}@media (min-width:1920px){.disclaimer{width:60%}}</style>
