@@ -530,19 +530,23 @@ Ngày lập quẻ:
 	 $('#clickluchao').click(function(e){
         const copy_ele = $('#screenshot').get(0).cloneNode(true);
 
+        const scrollW = copy_ele.scrollWidth;
+        const scrollH = copy_ele.scrollHidth;
+
         var f = "quedich";
 		$('#preview').empty();
-		$("#screenshot").show();
+		copy_ele.show();
         $('body').css('overflow-y','hidden');
 
         html2canvas(copy_ele, {
             useCORS: true,
             }).then((canvas) => {
-                var canvasWidth = copy_ele.scrollWidth;
-                var canvasHeight = copy_ele.scrollHeight;
+                var canvasWidth = scrollW;
+                var canvasHeight = scrollH;
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
                 copy_preview.prepend(img);
-                $("#screenshot").hide();
+
+                copy_ele.hide();
                 $('body').css('overflow-y','scroll');
             });
 	 })
