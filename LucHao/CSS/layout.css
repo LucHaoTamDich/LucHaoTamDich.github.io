@@ -1,4 +1,10 @@
 @charset "utf-8";
+
+@media print {
+    body * { display: none; }
+    #screenshot * { display: unset; }
+}
+
 /* CSS Document */
 #content{max-width:800px; margin:0 auto;
 	font-family: "Times New Roman", Times, sans-serif;
