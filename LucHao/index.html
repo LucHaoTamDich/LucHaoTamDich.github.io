@@ -535,7 +535,7 @@ Ngày lập quẻ:
 		$('#preview').empty();
 		$("#screenshot").show();
         html2canvas(elm).then(function(canvas) {
-                var canvasWidth = canvas.width;
+                var canvasWidth = canvas.width-10;
                 var canvasHeight = canvas.height;
                 var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
                     $('#preview').prepend(img);
