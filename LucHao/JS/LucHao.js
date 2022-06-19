@@ -3028,8 +3028,7 @@ function _image()
 
 	var f = "quedich";
 	$('#preview').empty();
-	$('#screenshot').show();
-	
+
 	html2canvas(ele, {
 		useCORS: true,
 	}).then(function(canvas){
@@ -3040,7 +3039,5 @@ function _image()
 
 		var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
 		$('#preview').prepend(img);
-
-		$('#screenshot').hide();
 	});
 }
