@@ -3021,7 +3021,7 @@ function luchao() {
 	const copy_ele = ele.cloneNode(true);
 	
 	const scrollW = ele.scrollWidth;
-	const scrollH = ele.scrollHidth;
+	const scrollH = ele.scrollHeight;
 
 	var f = "quedich";
 	$('#preview').empty();
