@@ -3015,4 +3015,31 @@ function luchao() {
 	document.getElementById('tenquechinh').setAttribute('style', 'width:250px');
 	document.getElementById('tenquebien').setAttribute('style', 'width:250px');
 	document.getElementById('tenqueho').setAttribute('style', 'width:250px');
+
+	const ele = $('#screenshot').get(0);
+
+	const copy_ele = ele.cloneNode(true);
+	
+	const scrollW = ele.scrollWidth;
+	const scrollH = ele.scrollHidth;
+
+	var f = "quedich";
+	$('#preview').empty();
+	$('#screenshot').show();
+	$('body').css('overflow-y','hidden');
+
+	html2canvas($('#screenshot').get(0), {
+		useCORS: true,
+	}).then(function(canvas){
+		var canvasWidth = scrollW;
+		var canvasHeight = scrollH;
+		console.log(scrollW + '\n');
+		console.log(scrollH + '\n');
+
+		var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
+		$('#preview').prepend(img);
+
+		//$('#screenshot').hide();
+		$('body').css('overflow-y','scroll');
+	});
 }

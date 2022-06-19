@@ -527,32 +527,35 @@ Ngày lập quẻ:
 
 <script>
      //$("#screenshot").hide();
-	 $('#clickluchao').click(function(e){
-        const copy_ele = $('#screenshot').get(0).cloneNode(true);
+	//  $('#clickluchao').click(function(e){
 
-        const scrollW = copy_ele.scrollWidth;
-        const scrollH = copy_ele.scrollHidth;
+    //     const ele = $('#screenshot').get(0);
 
-        var f = "quedich";
-		$('#preview').empty();
-		$('#screenshot').show();
-        $('body').css('overflow-y','hidden');
+    //     const copy_ele = ele.cloneNode(true);
+        
+    //     const scrollW = ele.scrollWidth;
+    //     const scrollH = ele.scrollHidth;
 
-        html2canvas($('#screenshot').get(0), {
-            useCORS: true,
-            }).then(function(canvas){
-                var canvasWidth = scrollW;
-                var canvasHeight = scrollH;
-                console.log(scrollW + '\n');
-                console.log(scrollH + '\n');
+    //     var f = "quedich";
+	// 	$('#preview').empty();
+	// 	$('#screenshot').show();
+    //     $('body').css('overflow-y','hidden');
 
-                var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
-                $('#preview').prepend(img);
+    //     html2canvas($('#screenshot').get(0), {
+    //         useCORS: true,
+    //         }).then(function(canvas){
+    //             var canvasWidth = scrollW;
+    //             var canvasHeight = scrollH;
+    //             console.log(scrollW + '\n');
+    //             console.log(scrollH + '\n');
 
-                //$('#screenshot').hide();
-                $('body').css('overflow-y','scroll');
-            });
-	 })
+    //             var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
+    //             $('#preview').prepend(img);
+
+    //             //$('#screenshot').hide();
+    //             $('body').css('overflow-y','scroll');
+    //         });
+	//  })
 </script>
 <style>.footer,.generic-footer{margin-bottom:98px}@media (min-width:374px){.footer,.generic-footer{margin-bottom:78px}}@media (min-width:546px){.footer,.generic-footer{margin-bottom:56px}}@media (min-width:1055px){.footer,.generic-footer{margin-bottom:0}}.disclaimer{position:fixed;z-index:9999999;bottom:0;right:0;border-top:2px solid #ff5c62;text-align:center;font-size:14px;font-weight:400;background-color:#fff;padding:5px 10px 5px 10px}.disclaimer a:hover{text-decoration:underline}@media (min-width:1052px){.disclaimer{text-align:right;border-left:2px solid red;border-top-left-radius:10px}}@media (min-width:1920px){.disclaimer{width:60%}}</style>
 <script type="text/javascript" src="./JS/LucHaoTab.js"></script>
