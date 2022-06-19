@@ -3050,6 +3050,6 @@ function captune()
 {
 	let div = document.getElementById('screenshot');
 	html2canvas(div).then(function (canvas) {
-		document.getElementById('preview').innerHTML = canvas;
+		document.getElementById('preview').appendChild(canvas);
 	});
 }
