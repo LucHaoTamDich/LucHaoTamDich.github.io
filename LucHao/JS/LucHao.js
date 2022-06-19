@@ -3039,7 +3039,7 @@ function luchao() {
 		var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
 		$('#preview').prepend(img);
 
-		//$('#screenshot').hide();
+		$('#screenshot').hide();
 		$('body').css('overflow-y','scroll');
 	});
 }
