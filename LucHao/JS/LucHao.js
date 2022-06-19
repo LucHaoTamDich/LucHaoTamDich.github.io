@@ -3016,10 +3016,13 @@ function luchao() {
 	document.getElementById('tenquebien').setAttribute('style', 'width:250px');
 	document.getElementById('tenqueho').setAttribute('style', 'width:250px');
 
+	_image();
+}
+
+function _image()
+{
 	const ele = $('#screenshot').get(0);
 
-	const copy_ele = ele.cloneNode(true);
-	
 	const scrollW = ele.scrollWidth;
 	const scrollH = ele.scrollHeight;
 
@@ -3028,7 +3031,7 @@ function luchao() {
 	$('#screenshot').show();
 	$('body').css('overflow-y','hidden');
 
-	html2canvas($('#screenshot').get(0), {
+	html2canvas(ele, {
 		useCORS: true,
 	}).then(function(canvas){
 		var canvasWidth = scrollW;
