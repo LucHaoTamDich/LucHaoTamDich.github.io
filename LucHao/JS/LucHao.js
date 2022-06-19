@@ -3056,7 +3056,7 @@ function captune()
 		let CAVE = document.getElementsByTagName('canvas')[0];
 		let dataIMG = CAVE.toDataURL('image/png');
 		CAVE.hidden = true;
-		window.location = dataIMG;
+		window.location.href = dataIMG;
 		$('#preview').prepend(genImage(dataIMG));
 	});
 }
