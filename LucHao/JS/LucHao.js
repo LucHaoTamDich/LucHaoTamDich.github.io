@@ -3016,7 +3016,7 @@ function luchao() {
 	document.getElementById('tenquebien').setAttribute('style', 'width:250px');
 	document.getElementById('tenqueho').setAttribute('style', 'width:250px');
 
-	_image();
+	captune();
 }
 
 function _image()
@@ -3040,4 +3040,29 @@ function _image()
 		var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
 		$('#preview').prepend(img);
 	});
+}
+
+function captune()
+{
+	const capture = async () => {
+		const canvas = document.createElement("canvas");
+		const context = canvas.getContext("2d");
+		const video = document.createElement("video");
+		const ele = $('#screenshot').get(0);
+
+		const scrollW = ele.scrollWidth;
+		const scrollH = ele.scrollHeight;
+		try {
+		  const captureStream = await navigator.mediaDevices.getDisplayMedia();
+		  video.srcObject = captureStream;
+		  context.drawImage(video, 0, 0, window.width - scrollW, window.height - scrollH);
+		  const frame = canvas.toDataURL("image/png");
+		  captureStream.getTracks().forEach(track => track.stop());
+		  window.location.href = frame;
+		} catch (err) {
+		  console.error("Error: " + err);
+		}
+	  };
+	  
+	  capture();
 }
