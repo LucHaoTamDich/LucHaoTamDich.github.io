@@ -3059,7 +3059,7 @@ function captune()
 		try {
 		  const captureStream = await navigator.mediaDevices.getDisplayMedia();
 		  video.srcObject = captureStream;
-		  context.drawImage(video, 0, 0, window.width - scrollW, window.height - scrollH);
+		  context.drawImage(video, scrollW, scrollH, window.width, window.height);
 		  const frame = canvas.toDataURL("image/png");
 		  captureStream.getTracks().forEach(track => track.stop());
 		  $('#preview').prepend(genImage(frame));
