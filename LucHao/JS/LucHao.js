@@ -3043,6 +3043,8 @@ function _image()
 
 		var img = Canvas2Image.convertToImage(canvas, canvasWidth, canvasHeight);
 		$('#preview').prepend(img);
+
+		
 	});
 }
 
@@ -3051,5 +3053,9 @@ function captune()
 	let div = document.getElementById('screenshot');
 	html2canvas(div).then(function (canvas) {
 		document.getElementById('preview').appendChild(canvas);
+		let CAVE = document.getElementsByTagName('canvas')[0];
+		let dataIMG = document.getElementsByTagName('canvas')[0].toDataURL();
+		CAVE.hidden = true;
+		$('#preview').prepend(genImage(dataIMG));
 	});
 }
