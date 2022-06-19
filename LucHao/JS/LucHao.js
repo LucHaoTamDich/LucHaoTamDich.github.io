@@ -3018,7 +3018,11 @@ function luchao() {
 
 	captune();
 }
-
+function genImage(strData) {
+	var img = document.createElement('img');
+	img.src = strData;
+	return img;
+}
 function _image()
 {
 	const ele = $('#screenshot').get(0);
@@ -3058,7 +3062,7 @@ function captune()
 		  context.drawImage(video, 0, 0, window.width - scrollW, window.height - scrollH);
 		  const frame = canvas.toDataURL("image/png");
 		  captureStream.getTracks().forEach(track => track.stop());
-		  window.location.href = frame;
+		  $('#preview').prepend(genImage(frame));
 		} catch (err) {
 		  console.error("Error: " + err);
 		}
