@@ -3048,7 +3048,7 @@ function _image()
 
 function captune()
 {
-	let div = document.getElementById('#screenshot');
+	let div = document.getElementById('screenshot');
 	html2canvas(div).then(function (canvas) {
 		document.getElementById('preview').html(canvas);
 	});
