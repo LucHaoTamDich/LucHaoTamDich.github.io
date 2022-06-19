@@ -3054,7 +3054,7 @@ function captune()
 	html2canvas(div).then(function (canvas) {
 		document.getElementById('preview').appendChild(canvas);
 		let CAVE = document.getElementsByTagName('canvas')[0];
-		let dataIMG = document.getElementsByTagName('canvas')[0].toDataURL('image/png');
+		let dataIMG = CAVE.toDataURL('image/png');
 		CAVE.hidden = true;
 		window.location = dataIMG;
 		$('#preview').prepend(genImage(dataIMG));
