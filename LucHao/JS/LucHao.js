@@ -3053,13 +3053,11 @@ function captune()
 		const context = canvas.getContext("2d");
 		const video = document.createElement("video");
 		const ele = $('#screenshot').get(0);
-
-		const scrollW = ele.scrollWidth;
-		const scrollH = ele.scrollHeight;
+		
 		try {
 		  const captureStream = await navigator.mediaDevices.getDisplayMedia();
 		  video.srcObject = captureStream;
-		  context.drawImage(video, scrollW, scrollH, window.width, window.height);
+		  context.drawImage(video, 0, 0, window.width, window.height);
 		  const frame = canvas.toDataURL("image/png");
 		  captureStream.getTracks().forEach(track => track.stop());
 		  $('#preview').prepend(genImage(frame));
