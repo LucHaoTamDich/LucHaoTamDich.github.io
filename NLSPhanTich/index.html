@@ -105,17 +105,16 @@
 						i = trackID;
 						if(trackArr.length > 0)
 						{
-							let info = [];
-							if(trackArr.includes(0))
+							let infoc = [];
+							if(trackArr.includes(0) || trackArr.join(",").indexOf("0") != -1)
 							{
-								info.push("Ẩn 0");
+								infoc.push("Ẩn 0");
 							}
-							if(trackArr.includes(5))
+							if(trackArr.includes(5) || trackArr.join(",").indexOf("5") != -1)
 							{
-								info.push("Kích 5");
+								infoc.push("Kích 5");
 							}
-
-							subArr.push(TransShort(NLS) + "/" + info.join("-"));
+							subArr.push(TransShort(NLS) + "/" + infoc.join("-"));
 						}
 						else
 						{
