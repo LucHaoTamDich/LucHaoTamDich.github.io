@@ -8,27 +8,158 @@
 			function randomInteger(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
+			const LinhSo = {
+				TuyetMenh: [[12, 21], [69, 96], [48, 84], [37, 73]],
+				SinhKhi: [[14, 41], [67, 76], [39, 93], [28, 82]],
+				ThienY: [[13, 31], [68, 86], [49, 94], [27, 72]],
+				DienNien: [[19, 91], [78, 87], [34, 43], [26, 62]],
+				PhucVi: [[11, 22], [99, 88], [77, 66], [44, 33]],
+				HoaHai: [[17, 71], [89, 98], [46, 64], [23, 32]],
+				NguQuy: [[18, 81], [97, 79], [36, 63], [42, 24]],
+				LucSat: [[16, 61], [47, 74], [38, 83], [29, 92]],
+			};
+			const BatCuc = ['TuyetMenh', 'SinhKhi', 'ThienY', 'DienNien', 'PhucVi', 'HoaHai', 'NguQuy', 'LucSat'];
+			const BatCuc_Short = [['TuyetMenh', 'TM'], ['SinhKhi', 'SK'], ['ThienY', 'TY'], ['DienNien', 'DN'], ['PhucVi', 'PV'], ['HoaHai', 'HH'], ['NguQuy', 'NQ'], ['LucSat', 'LS']];
+
+			function isSingle(type, number)
+			{
+				return [type, LinhSo[type].filter(s => s.includes(number)).length != 0];
+			}
+
+			function isNLS(number)
+			{
+				let result = null;
+				BatCuc.forEach(type => {
+					let rs = isSingle(type, parseInt(number));
+					if(rs[1] == true)
+					{
+						return result = number + "-" + rs[0];
+					}
+				});
+
+				return result;
+			}
+
+			function isNLSEnd(number)
+			{
+				let result = null;
+				BatCuc.forEach(type => {
+					let rs = isSingle(type, parseInt(number));
+					if(rs[1] == true)
+					{
+						return result = rs[0];
+					}
+				});
+
+				return result;
+			}
+
+			function TransShort(NLSInfo)
+			{
+				for(let i = 0; i < BatCuc_Short.length; i++)
+				{
+					if(NLSInfo && NLSInfo.includes(BatCuc_Short[i][0]))
+					{
+						return NLSInfo.replace(BatCuc_Short[i][0], BatCuc_Short[i][1]);
+					}
+				}
+			}
+
+			function CheckSub(arr)
+			{
+				let subArr = [];
+
+				for(let i = 0; i < arr.length; ++i)
+				{
+					let numCurrent = arr[i];
+
+					let trackArr = [];
+					let trackID = -1;
+					let trackNum = -1;
+					for(let j = i+1; j < arr.length; ++j)
+					{
+						let numCR = arr[j];
+						let isNum05CT = numCR == 5 ? true : numCR == 0 ? true : false;
+						if(isNum05CT)
+						{
+							trackArr.push(numCR);
+						}
+						else
+						{
+							trackNum = numCR;
+							trackID = j-1;
+							break;
+						}
+					}
+
+					if(trackID != -1)
+					{
+						let NLS = isNLS(numCurrent + "" + trackNum);
+						NLS = NLS == null ? numCurrent + "" + trackNum + "-PhucVi" : NLS;
+						i = trackID;
+						if(trackArr.length > 0)
+						{
+							let info = [];
+							if(trackArr.includes(0))
+							{
+								info.push("Ẩn 0");
+							}
+							if(trackArr.includes(5))
+							{
+								info.push("Kích 5");
+							}
+
+							subArr.push(TransShort(NLS) + "/" + info.join("-"));
+						}
+						else
+						{
+							subArr.push(TransShort(NLS));
+						}
+					}
+				}
+				
+				return subArr;
+			}
+
 			function RandSDT() {
                 var random = new Random.Random();
-				return (
-					"09" +
-					"" +
-					random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9) +
-					"" +
-					+ random.integer(0, 9)
-				);
+
+				let arr = [];
+
+				for(let j = 0; j <= 9; j++)
+				{
+					if(j == 0)
+					{
+						arr.push(0);
+					}
+					else if(j == 1)
+					{
+						arr.push(9);
+					}
+					else
+					{
+						let c = random.integer(0, 9);
+						arr.push(parseInt(c));
+					}
+					
+				}
+				let SubArr = CheckSub(arr);
+
+				let EndNL = arr.slice(Math.max(arr.length - 2, 0));
+				let EndRS = SubArr.slice(Math.max(SubArr.length - 1, 0));
+
+				let infoLast;
+				if(EndNL.includes(0) || EndNL.join() == "05")
+				{
+					infoLast = "Kết Từ Trường: 0, 05 => Cực Xấu";
+				}
+				else
+				{
+					infoLast = "Kết Từ Trường:" + (EndRS.join("").toString().indexOf("-NQ") != -1 ? "NQ-Xấu" : EndRS.join("").toString().indexOf("-HH") != -1 ? "HH-Xấu" : EndRS.join("").toString().indexOf("-TM") != -1 ? "TM-Xấu" : EndRS.join("").toString().indexOf("-LS") != -1 ? "LS-Xấu" : "Tốt");
+				}
+				
+				
+				return SubArr.join(" | ") + "<br />" + arr.join("") + "<br />" + infoLast;
 			}
 			function ShowRes() {
 
@@ -53,15 +184,11 @@
             </div>
           </nav>
         <div class="container text-center">
-            <div class="row">
-              <div class="col d-inline-flex m-5  mb-lg-0">
-                <div class="card">
-                    <div class="card-body">
-                        <div id="sdt-result">No SĐT</div> <button type="button" class="btn btn-primary" onClick="ShowRes()">Rand Click</button>
-                    </div>
-                  </div>
-              </div>
-            </div>
+            <div class="card">
+				<div class="card-body">
+					<div id="sdt-result">No SĐT</div> <button type="button" class="btn btn-primary" onClick="ShowRes()">Rand Click</button>
+				</div>
+			  </div>
           </div>
 	</body>
 </html>
