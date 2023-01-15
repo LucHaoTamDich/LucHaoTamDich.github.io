@@ -14,17 +14,49 @@
 			function randomInteger(min, max) {
 				return Math.floor(Math.random() * (max - min + 1)) + min;
 			}
+			
 			const LinhSo = {
-				TuyetMenh: [[12, 21], [69, 96], [48, 84], [37, 73]],
-				SinhKhi: [[14, 41], [67, 76], [39, 93], [28, 82]],
-				ThienY: [[13, 31], [68, 86], [49, 94], [27, 72]],
-				DienNien: [[19, 91], [78, 87], [34, 43], [26, 62]],
-				PhucVi: [[11, 22], [99, 88], [77, 66], [44, 33]],
-				HoaHai: [[17, 71], [89, 98], [46, 64], [23, 32]],
-				NguQuy: [[18, 81], [97, 79], [36, 63], [42, 24]],
-				LucSat: [[16, 61], [47, 74], [38, 83], [29, 92]],
+				TuyetMenhTo: [[12, 21]],
+				TuyetMenhVua: [[69, 96]],
+				TuyetMenhHoiNho: [[48, 84]],
+				TuyetMenhNho: [[37, 73]],
+				SinhKhiTo: [[14, 41]],
+				SinhKhiVua: [[67, 76]],
+				SinhKhiHoiNho: [[39, 93]],
+				SinhKhiNho: [[28, 82]],
+				ThienYTo: [[13, 31]],
+				ThienYVua: [[68, 86]],
+				ThienYHoiNho: [[49, 94]],
+				ThienYNho: [[27, 72]],
+				DienNienTo: [[19, 91]],
+				DienNienVua: [[78, 87]],
+				DienNienHoiNho: [[34, 43]],
+				DienNienNho: [[26, 62]],
+				PhucViTo: [[11, 22]],
+				PhucViVua: [[99, 88]],
+				PhucViHoiNho: [[77, 66]],
+				PhucViNho: [[44, 33]],
+				HoaHaiTo: [[17, 71]],
+				HoaHaiVua: [[89, 98]],
+				HoaHaiHoiNho: [[46, 64]],
+				HoaHaiNho: [[23, 32]],
+				NguQuyTo: [[18, 81]],
+				NguQuyVua: [[97, 79]],
+				NguQuyHoiNho: [[36, 63]],
+				NguQuyNho: [[42, 24]],
+				LucSatTo: [[16, 61]],
+				LucSatVua: [[47, 74]],
+				LucSatHoiNho: [[38, 83]],
+				LucSatNho: [[29, 92]],
 			};
-			const BatCuc = ['TuyetMenh', 'SinhKhi', 'ThienY', 'DienNien', 'PhucVi', 'HoaHai', 'NguQuy', 'LucSat'];
+			const BatCuc = ['TuyetMenhTo', 'TuyetMenhVua', 'TuyetMenhHoiNho', 'TuyetMenhNho',
+							'SinhKhiTo', 'SinhKhiVua', 'SinhKhiHoiNho', 'SinhKhiNho',
+							'ThienYTo', 'ThienYVua', 'ThienYHoiNho', 'ThienYNho',
+							'DienNienTo', 'DienNienVua', 'DienNienHoiNho', 'DienNienNho',
+							'PhucViTo', 'PhucViVua', 'PhucViHoiNho', 'PhucViNho',
+							'HoaHaiTo', 'HoaHaiVua', 'HoaHaiHoiNho', 'HoaHaiNho',
+							'NguQuyTo', 'NguQuyVua', 'NguQuyHoiNho', 'NguQuyNho',
+							'LucSatTo', 'LucSatVua', 'LucSatHoiNho', 'LucSatNho'];
 			const BatCuc_Short = [['TuyetMenh', 'TM'], ['SinhKhi', 'SK'], ['ThienY', 'TY'], ['DienNien', 'DN'], ['PhucVi', 'PV'], ['HoaHai', 'HH'], ['NguQuy', 'NQ'], ['LucSat', 'LS']];
 
 			function isSingle(type, number)
@@ -66,7 +98,7 @@
 				{
 					if(NLSInfo && NLSInfo.includes(BatCuc_Short[i][0]))
 					{
-						return NLSInfo.replace(BatCuc_Short[i][0], BatCuc_Short[i][1]);
+						return NLSInfo.replace("To", "-To").replace("Vua", "-Vừa").replace("HoiNho", "-Hơi Nhỏ").replace("Nho", "-Nhỏ").replace(BatCuc_Short[i][0], BatCuc_Short[i][1]);
 					}
 				}
 			}
