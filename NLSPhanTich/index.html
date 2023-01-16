@@ -107,7 +107,7 @@
 			{
 				let subArr = [];
 
-				for(let i = 0; i < arr.length; ++i)
+				for(let i = 1; i < arr.length; ++i)
 				{
 					let numCurrent = arr[i];
 
@@ -150,7 +150,34 @@
 						}
 						else
 						{
-							subArr.push(TransShort(NLS));
+							let infof = [];
+							//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+							if((i-1) >= 0 && (i-1) != 0)
+							{
+								let numPrev1 = arr[i-1];
+
+								if(numPrev1 == 0)
+								{
+									infof.push("Ẩn 0");
+								}
+							}
+
+							if((i+2) < arr.length)
+							{
+								let numConti2 = arr[i+2];
+
+								if(numConti2 == 0)
+								{
+									infof.push("Ẩn 0");
+								}
+								if(numConti2 == 5)
+								{
+									infof.push("Kích 5");
+								}
+							}
+							//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+							subArr.push(TransShort(NLS) + (infof.length > 0 ? "/" + infof.join("-") : ""));
 						}
 					}
 				}
@@ -177,7 +204,6 @@
 				{
 					infoLast = "Kết Từ Trường:" + (EndRS.join("").toString().indexOf("-NQ") != -1 ? "NQ-Xấu" : EndRS.join("").toString().indexOf("-HH") != -1 ? "HH-Xấu" : EndRS.join("").toString().indexOf("-TM") != -1 ? "TM-Xấu" : EndRS.join("").toString().indexOf("-LS") != -1 ? "LS-Xấu" : "Tốt");
 				}
-				
 				
 				return SubArr.join(" | ") + "<br />" + arr.join("") + "<br />" + infoLast;
 			}
